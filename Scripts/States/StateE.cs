@@ -4,9 +4,9 @@ namespace DFAExample
 {
     internal class StateE : StateBase
     {
+        // StateE is final state so it contains no transitions
         public StateE(StateNode node) : base(node) { }
 
-        // StateE is final state and contains no transitions
         public override void EnterState(object[] args)
         {
             base.EnterState(args);

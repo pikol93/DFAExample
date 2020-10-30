@@ -1,7 +1,8 @@
-using Godot;
-
 namespace DFAExample
 {
+    /// <summary>
+    /// Contains behaviour that gets called when the state is active
+    /// </summary>
     internal class StateBase : DFAStateEngineBase<InputSignals, ExampleStates>
     {
         private StateNode node;
@@ -19,13 +20,13 @@ namespace DFAExample
             }
         }
 
+        public override void Update(float delta)
+        {
+            node.OnUpdate(delta);
+        }
+
         public override void EnterState(object[] args)
         {
-            GD.Print($"Entered state {this.GetType()}.");
-            if (args != null)
-            {
-                GD.Print($"Args: [{string.Join(", ", args)}]");
-            }
             node.OnEntered(args);
         }
 

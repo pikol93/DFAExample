@@ -17,10 +17,10 @@ namespace DFAExample
             StateNode stateNodeD = GetNode<StateNode>("StateD");
             StateNode stateNodeE = GetNode<StateNode>("StateE");
 
-            // Initialize the state machine
+            // Create the DFA and states for it
             StateMachine = new DFATreeEngineBase<InputSignals, ExampleStates>();
 
-            Dictionary<ExampleStates, DFAState<InputSignals, ExampleStates>> states = 
+            Dictionary<ExampleStates, DFAState<InputSignals, ExampleStates>> states =
                 new Dictionary<ExampleStates, DFAState<InputSignals, ExampleStates>>()
             {
                 { ExampleStates.StateA, new StateA(stateNodeA) },
@@ -29,26 +29,29 @@ namespace DFAExample
                 { ExampleStates.StateD, new StateD(stateNodeD) },
                 { ExampleStates.StateE, new StateE(stateNodeE) }
             };
-            
+
+            // Initialize states in the DFA
             StateMachine.CreateStates(states, ExampleStates.StateA);
         }
 
         public override void _Process(float delta)
         {
+            // State Machine calls the active state's Update method
             StateMachine.Update(delta);
         }
 
         public override void _Input(InputEvent @event)
         {
+            // This acts as a way to simulate getting signals
             if (Input.IsActionJustPressed("signal_1"))
             {
                 StateMachine.InvokeSignal(InputSignals.Input1);
             }
-            if (Input.IsActionJustPressed("signal_2"))
+            else if (Input.IsActionJustPressed("signal_2"))
             {
                 StateMachine.InvokeSignal(InputSignals.Input2);
             }
-            if (Input.IsActionJustPressed("signal_3"))
+            else if (Input.IsActionJustPressed("signal_3"))
             {
                 StateMachine.InvokeSignal(InputSignals.Input3);
             }
@@ -60,7 +63,7 @@ namespace DFAExample
 
             if (Engine.EditorHint)
                 return;
-            
+
             if (disposing)
             {
                 StateMachine?.Dispose();

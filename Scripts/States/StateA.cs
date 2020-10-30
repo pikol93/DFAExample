@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Godot;
 using Pikol93.DFA;
 
 namespace DFAExample
@@ -13,7 +12,9 @@ namespace DFAExample
             {
                 { InputSignals.Input1, new DFATransition<ExampleStates>
                 (
-                    ExampleStates.StateB,
+                    // This is the target state the transition aims for
+                    ExampleStates.StateB, 
+                    // This is an optinal delegate returning object[]
                     () => { return new object[] { "StateA" }; }
                 )
                 }

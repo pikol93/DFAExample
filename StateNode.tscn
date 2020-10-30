@@ -35,9 +35,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+[node name="TimePassed" type="Label" parent="VBoxContainer"]
 margin_top = 36.0
 margin_right = 200.0
-margin_bottom = 68.0
+margin_bottom = 50.0
+text = "#TIME_PASSED"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+margin_top = 54.0
+margin_right = 200.0
+margin_bottom = 86.0
 texture = ExtResource( 2 )
 stretch_mode = 4

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Godot;
 using Pikol93.DFA;
 
 namespace DFAExample

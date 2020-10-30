@@ -7,7 +7,10 @@ namespace DFAExample
         where TSignal : Enum
         where TState : Enum
     {
+        /// <summary>
+        /// Contains behaviour that can get called every frame.
+        /// </summary>
+        /// <param name="delta">Time since last frame.</param>
         public virtual void Update(float delta) { }
-        public virtual void UpdateRare() { }
     }
 }
